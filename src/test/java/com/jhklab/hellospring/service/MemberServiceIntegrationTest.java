@@ -1,34 +1,26 @@
 package com.jhklab.hellospring.service;
 
 import com.jhklab.hellospring.domain.Member;
-import com.jhklab.hellospring.repository.MemoryMemberRepository;
+import com.jhklab.hellospring.repository.MemberRepository;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+// 스프링테스트할때 추가
+@SpringBootTest
+@Transactional  // 커밋 전까진 DB에 반영이 되지 않음, 롤백시켜버린다는 의미(테스트 케이스에서만 이렇게 동작)
+class MemberServiceIntegrationTest {
+    // 통합 테스트
 
-
-class MemberServiceTest {
-    // 단위 테스트
-
-    MemoryMemberRepository memberRepository;
-    MemberService memberService;
-
-    @BeforeEach // 각 테스트의 실행 전 실행
-    public void beforeEach() {
-        memberRepository = new MemoryMemberRepository();
-        memberService = new MemberService(memberRepository);
-    }
-
-    @AfterEach  // 각 테스트가 끝나고 호출되는 메소드
-    public void afterEach() {
-        memberRepository.clearStore();
-    }
+    // 테스트 케이스는 그냥 AutoWired 해버리기
+    @Autowired MemberService memberService;
+    @Autowired MemberRepository memberRepository;
 
     @Test
     void 회원가입() {   //테스트는 과감하게 한글 메소드로 써도 괜찮
@@ -67,11 +59,4 @@ class MemberServiceTest {
         // then
     }
 
-    @Test
-    void findMembers() {
-    }
-
-    @Test
-    void findOne() {
-    }
 }
