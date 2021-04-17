@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @SpringBootTest
 @Transactional  // 커밋 전까진 DB에 반영이 되지 않음, 롤백시켜버린다는 의미(테스트 케이스에서만 이렇게 동작)
 class MemberServiceIntegrationTest {
-    // 통합 테스트
+    // 통합 테트
 
     // 테스트 케이스는 그냥 AutoWired 해버리기
     @Autowired MemberService memberService;
