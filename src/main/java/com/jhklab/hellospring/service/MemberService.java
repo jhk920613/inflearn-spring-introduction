@@ -16,7 +16,7 @@ public class MemberService {    // 클래스에서 Command Shift T 누르면 JUn
 
     private final MemberRepository memberRepository;
 
-//    @Autowired
+    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }

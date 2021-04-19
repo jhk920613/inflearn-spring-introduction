@@ -1,5 +1,6 @@
 package com.jhklab.hellospring;
 
+import com.jhklab.hellospring.aop.TimeTraceAop;
 import com.jhklab.hellospring.repository.JdbcMemberRepository;
 import com.jhklab.hellospring.repository.JdbcTemplateMemberRepository;
 import com.jhklab.hellospring.repository.JpaMemberRepository;
@@ -21,6 +22,12 @@ public class SpringConfig {
     public SpringConfig(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
+
+    // 방법1
+//    @Bean
+//    public TimeTraceAop timeTraceAop() {
+//        return new TimeTraceAop();
+//    }
 
     @Bean
     public MemberService memberService() {
